@@ -16,18 +16,29 @@
     <ul>
         <?php
         $audioDir = 'uploads/';
-        $audioFiles = scandir($audioDir);
 
-        foreach ($audioFiles as $file) {
-            if ($file != '.' && $file != '..') {
-                $fileName = pathinfo($file, PATHINFO_FILENAME); // Obtener el nombre del archivo sin extensión
-                echo '<li>';
-                echo '<audio controls><source src="' . $audioDir . $file . '" type="audio/mpeg"></audio>';
-                echo '<p>' . $fileName . '</p>'; // Mostrar el nombre del archivo
-                echo '</li>';
+        if (is_dir($audioDir)) {
+            $audioFiles = scandir($audioDir);
+
+            if (count($audioFiles) <= 2) {
+                echo '<p>No existen audios disponibles.</p>';
+            } else {
+                foreach ($audioFiles as $file) {
+                    if ($file != '.' && $file != '..') {
+                        $fileName = pathinfo($file, PATHINFO_FILENAME); // Obtener el nombre del archivo sin extensión
+                        echo '<li>';
+                        echo '<audio controls><source src="' . $audioDir . $file . '" type="audio/mpeg"></audio>';
+                        echo '<p>' . $fileName . '</p>'; // Mostrar el nombre del archivo
+                        echo '</li>';
+                    }
+                }
             }
+        } else {
+            echo '<p>La carpeta de audios no existe.</p>';
         }
         ?>
+
+
     </ul>
 
 </body>
