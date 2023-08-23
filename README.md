@@ -1,4 +1,4 @@
-# 🔥Aprende Aqui Cómo Grabar Audio Usando JavaScript: Paso a Paso
+# 🔥Aprende Cómo Grabar Audio Usando JavaScript: Paso a Paso
 
 ### Grabar Audio
 
